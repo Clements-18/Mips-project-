@@ -1,9 +1,5 @@
 .globl main  
 
-#GamePlan
-#user inputs 10 character of string in ASCII
-#
-
 
 .data
 array: .space 11
