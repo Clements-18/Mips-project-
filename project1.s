@@ -11,10 +11,10 @@ newline: .asciiz "\n"
 
 
 main: 
-	li $a1, 11
-	li $v0, 8
-	la $a0, array 
-	syscall
+	li $a1, 11 # one null character + 10 characters  
+	li $v0, 8 # the opocode 
+	la $a0, array # takes in as an array from the user
+	syscall #Ends 
 
 	li $v0, 4
 	syscall 
