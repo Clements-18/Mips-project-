@@ -18,3 +18,21 @@ main:
 
 	li $v0, 4
 	syscall 
+
+#for loop code 
+	
+	bge $t6, 10, Fin  
+	lb $t7, 0($t5) 
+
+
+	ble $t7, 48 # if its less than 0 
+	ble $t7, 57 # if its more than 9
+ 
+	bge $t7, 65 # Big A 
+	ble $t7, 89 # Big Y
+
+	bge $t7, 97 # little a 
+	ble $t7, 121 # little y 
+
+Fin:
+	
