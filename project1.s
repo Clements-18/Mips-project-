@@ -49,7 +49,7 @@ loop #for loop code
 	lb $t4, 0($t5) 
 
 
-	ble $t4, 48, Fin # if its less than 0 Finish 
+	ble $t4, 47, Fin # if its less than 0 Finish 
 	ble $t4, 57, NumFun # if its more than 9 put in Number Funtion
  
 	bge $t4, 65, LetFunU   # Big A put in letter function upper case 
@@ -75,11 +75,16 @@ Fin:
 
 NumFun:     #the number function, checks range 
 
-	addi $a1, $a1, 0 
-	li   $v0, 1 #prints interger
-	syscall # allways at end
+	sub $t4, $t4, 48 
+	add   $s1, $s1 
+#print	
 		
 
-		addi $t , $t , 1
-		addi $t , $t , 1
+		addi $t6, $t6, 1
+		addi $t3, $t3, 1
 		j loop1 
+
+EndNumFun:
+add $a3, $s4, $zero
+li$ $v0, 1 
+syscall #prints 	
