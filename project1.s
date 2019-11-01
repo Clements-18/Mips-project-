@@ -71,6 +71,8 @@ Fin:
 
 
 
+
+
 NumFun:     #the number function, checks range 
 
 	sub $t4, $t4, 48 
@@ -92,7 +94,7 @@ EndNumFun:
 
 
 
-LetFunUpper:
+LetFunUpper:  # Upper case letters
 	addi $t6, $t6, 1
 	addi $t3, $t3, 1
 	blt $t4, 65,  LetFunU
@@ -101,14 +103,13 @@ LetFunUpper:
 	add $s1, s1, $t4 
 
 
-EndLetFunUpper:
+EndLetFunUpper: #ends earlier function
 	
 	add $t1, $s1, $zero
 
 
 
-
-LetterFunctionLower:
+LetterFunctionLower:  # lowercase letters
 	addi $t6, $t6, 1 
 	addi $t3, $t3, 1 
 	blt $t4,   97, LetFunL
@@ -118,8 +119,16 @@ LetterFunctionLower:
 	add  $s1, $s1, $t4  #compute
 	j loop1
 
-EndLetFunL:
-	add $t1, $s1, $zero
+EndLetFunL:#ends the loop
+	add $t1, $s1, $zero 
 	
 	
 
+ProgramLoop1:
+	 li $a1, 0 
+	 add $s1, $s1, $a1
+
+	 addi $t6, $t6, 1 
+	 addi $t3, $t3, 1 
+
+	j loop1 #Jump 
