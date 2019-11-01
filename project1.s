@@ -55,7 +55,7 @@ loop #for loop code
 	bge $t4, 65, LetFunU   # Big A put in letter function upper case 
 	ble $t4, 89,  LetFunU # Big Y put in number function upper case 
 
-	bge $t4, 97, LetFunL # little a >= put in letter function lower case 
+	bge $t4, 97, LetFunL # little a  put in letter function lower case 
 	ble $t4, 121, LetFunL # little y   put in letter function lower case 
 
 Fin:
@@ -71,8 +71,6 @@ Fin:
 
 
 
-
-
 NumFun:     #the number function, checks range 
 
 	sub $t4, $t4, 48 
@@ -85,6 +83,43 @@ NumFun:     #the number function, checks range
 		j loop1 
 
 EndNumFun:
-add $a3, $s4, $zero
-li$ $v0, 1 
-syscall #prints 	
+	add $a3, $s4, $zero
+	li$ $v0, 1 
+	syscall #prints 
+	
+	li $v0, 10
+	syscall	 
+
+
+
+LetFunUpper:
+	addi $t6, $t6, 1
+	addi $t3, $t3, 1
+	blt $t4, 65,  LetFunU
+
+	sub $t4, $t4, 55
+	add $s1, s1, $t4 
+
+
+EndLetFunUpper:
+	
+	add $t1, $s1, $zero
+
+
+
+
+LetterFunctionLower:
+	addi $t6, $t6, 1 
+	addi $t3, $t3, 1 
+	blt $t4,   97, LetFunL
+	
+
+	sub  $t4, $t4, 87
+	add  $s1, $s1, $t4  #compute
+	j loop1
+
+EndLetFunL:
+	add $t1, $s1, $zero
+	
+	
+
